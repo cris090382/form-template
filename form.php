@@ -288,7 +288,7 @@ include "top.php";
   <legend>Register Today</legend>
   <p>Please fill out the following registration form. <span class='required'></span>.</p>
 
-    <fieldset class="intro">
+    <fieldset class="wrapperTwo">
         <legend>Please complete the following form</legend>
 
         <fieldset class="contact"> 
@@ -307,13 +307,13 @@ include "top.php";
                        
                        onfocus="this.select()" >
                 </label>
-        </fieldset>					
-    </fieldset>
+        </fieldset>   <!-- ends contact -->				
+    </fieldset> <!-- ends wrapper Two -->
     <fieldset class="buttons">
           <legend></legend>				
           <input type="submit" id="btnSubmit" name="btnSubmit" value="Register" tabindex="900" class="button">
-    </fieldset>
-</fieldset>
+    </fieldset> <!-- ends buttons -->
+</fieldset> <!-- Ends Wrapper -->
 </form>
   
 <?php 
