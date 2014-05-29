@@ -2,25 +2,25 @@
 include "top.php";
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
- 
-
+//
+// Initialize variables
 
 // SECTION: 1a.
- 
+// 
+// variables for the classroom purposes to help find errors.
 
+$debug = false;
 
+if(isset($_GET["debug"])){ // ONLY do this in a classroom environment
+    $debug = true;  
+}
 
-
-
-
-
-
-
+if ($debug) print "<p>DEBUG MODE IS ON</p>";
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b. 
- 
+
  
 
 
@@ -28,11 +28,11 @@ include "top.php";
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1c. 
- 
+// 
+// Initialize variables one for each form element
+// in the order they appear on the form
 
-
-
-
+$email = "you@uvm.edu";
 
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -302,7 +302,7 @@ include "top.php";
             
             <label for="txtEmail" class="required">Email
                 <input type="text" id="txtEmail" name="txtEmail" 
-                       value=""
+                       value="<?php print $email; ?>"
                        tabindex="120" maxlength="45" placeholder="Enter a valid email address"
                        
                        onfocus="this.select()" >
