@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Mark me wrong</title>
-<meta charset="utf-8">
-<meta name="author" content="Mark me wrong">
-<meta name="description" content="Mark me wrong for not changing this">
+    <head>
+        <title>Mark me wrong</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Mark me wrong">
+        <meta name="description" content="Mark me wrong for not changing this">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--[if lt IE 9]>
-	<script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
-<![endif]-->
-	
-<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+        <!--[if lt IE 9]>
+                <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
+        <![endif]-->
 
-<?php
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+
+        <?php
+        $debug = false;
+
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^% 
 // 
 //  PATH SETUP
 //
 //  $domain = "https://www.uvm.edu" or http://www.uvm.edu;
+        $domain = "http://";
+        if (isset($_SERVER['HTTPS'])) {
+            if ($_SERVER['HTTPS']) {
+                $domain = "https://";
+            }
+        }
 
-if($_SERVER['HTTPS']) {
-    $domain = "https://";
-}else{
-    $domain = "http://";
-}
 
-$server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
+        $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
 
-$domain .= $server;
+        $domain .= $server;
 
-$phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
+        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
 
-$path_parts = pathinfo($phpSelf);
+        $path_parts = pathinfo($phpSelf);
 
-$basePath = $domain . $path_parts['dirname'] . "/";
+        $basePath = $domain . $path_parts['dirname'] . "/";
 
-if ($debug){
-    print "<p>Domain". $domain;
-    print "<p>php Self". $phpSelf;
-    print "<p>basePath". $basePath;
-    print "<p>Path Parts<pre>";
-    print_r($path_parts);
-    print "</pre>";
-}
+        if ($debug) {
+            print "<p>Domain" . $domain;
+            print "<p>php Self" . $phpSelf;
+            print "<p>basePath" . $basePath;
+            print "<p>Path Parts<pre>";
+            print_r($path_parts);
+            print "</pre>";
+        }
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^% 
 // 
 //  inlcude all libraries
 //  
-require_once('lib/security.php');
+        require_once('lib/security.php');
 
-if($path_parts['filename']=="form"){
-    include ("lib/validation_functions.php");
-    include_once('lib/mailMessage.php');  
-}
+        if ($path_parts['filename'] == "form") {
+            include ("lib/validation_functions.php");
+            include_once('lib/mailMessage.php');
+        }
+        ?>	
 
-?>	
+    </head>
+    <!-- ################  body section                ######################### -->
 
-</head>
-<!-- ################  body section                ######################### -->
+    <?php
+    print '<body id="' . $path_parts['filename'] . '">';
 
-<?php
-
-print '<body id="' . $path_parts['filename'] . '">';
-
-include "header.php";
-include "nav.php";
-
-?>
+    include "header.php";
+    include "nav.php";
+    ?>

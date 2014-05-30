@@ -1,12 +1,8 @@
 <?php
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // series of functions to help you validate your data. notice that each
 // function returns true or false
 
-function securityCheck($form = false) {
-    
-}
 function verifyAlphaNum ($testString) {
 	// Check for letters, numbers and dash, period, space and single quote only. 
 	return (preg_match ("/^([[:alnum:]]|-|\.| |')+$/", $testString));

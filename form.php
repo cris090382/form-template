@@ -44,8 +44,8 @@ $email = "youremail@uvm.edu";
 
 $emailERROR = false;
 
-
-
+// create array to hold error messages filled (if any) in 2d displayed in 3c.
+$errorMsg=array(); 
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //  
@@ -73,7 +73,7 @@ if (isset($_POST["btnSubmit"])){
     // setup variables
 
     
-    $errorMsg=array(); // holds error messages to display, blank if there are none
+    
 
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
