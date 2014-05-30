@@ -7,30 +7,35 @@ demostration purposes. Use your judgement when styling the form.
 */
 
 #main{
-    margin: auto;
+    margin: auto; /* because of the fixed width this centers the form */
     text-align: left;
-    width: 600px;
+    width: 600px;  /* not repsonive but fixed */
 }
 
+/* need to clear any floats that may exist */
 fieldset{
     clear: both;
     border: 1px solid #00498e;
     
 }
-fieldset.buttons{
-    border: none;
-}
+/* just pushes content to left side of the box. */
 fieldset.contact{
     float: left;
 }
-
+/* when you look at the labels this pushes then next to the input and right 
+   aligns them. Display block means they are each on their own line.  */
 fieldset.contact label{
     display: block;
-    text-align: right
+    text-align: right /* pushes the text to the right where they line up  */
+                      /*  the float left above pushes everything back to the left*/
 }
 
 fieldset.contact input{
-    width: 15em;    
+    width: 15em;    /* works with above to be the same size for the boxes */
+}
+
+fieldset.buttons{
+    border: none;
 }
 
 fieldset.wrapper {
@@ -50,20 +55,6 @@ fieldset.wrapper > legend {
     font-size: 2em; 
 }
 
-
-/* minor data validation, we would still need to use php to be certain */
-
-fieldset.contact input:valid{
-    border: medium solid green;
-}
-
-fieldset.contact input:invalid{
-    border: medium solid red;
-}
-fieldset.contact input.mistake:valid{
-    border: medium solid red;
-}
-
 /***********************************************************************/
 
 label {
@@ -73,6 +64,9 @@ label {
     display: block;
 }
 
+/* these are not all needed but here for you to see 
+   differnet ways to style the required attributes
+*/
 .required {
     font-weight:bolder;
     font-style:italic;
@@ -87,12 +81,26 @@ span.required:after {
     content: " Required *";
 }
 
+/* style the errors in the form so they are visible */
 .mistake {
     color: #fff;
     background-color:#800;
     border: thin solid #000;
 }
 
+/* style the list of errors that will show before the form */
 #errors ol li{
     color: #ff5555;
+}
+
+/* a few more tips that work well with html 5 */
+fieldset.contact input:valid{
+    border: medium solid green;
+}
+
+fieldset.contact input:invalid{
+    border: medium solid red;
+}
+fieldset.contact input.mistake:valid{
+    border: medium solid red;
 }
