@@ -70,7 +70,7 @@ if (isset($_POST["btnSubmit"])){
     //
     // SECTION: 2b. 
     //
-    // setup variables
+    // moved to section 1d
 
     
     
@@ -243,7 +243,7 @@ if (isset($_POST["btnSubmit"]) AND empty($errorMsg)){ // closing of if marked wi
 //
 // SECTION 3c.
 //
-// display any error messages beofre we print out the form
+// display any error messages before we print out the form
 
 if($errorMsg){
     print '<div id="errors">';
