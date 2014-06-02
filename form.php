@@ -31,7 +31,7 @@ $yourURL = $domain . $phpSelf;
 // 
 // Initialize variables one for each form element
 // in the order they appear on the form
-
+$firstName = "";
 $email = "youremail@uvm.edu";
 
 
@@ -41,7 +41,7 @@ $email = "youremail@uvm.edu";
 //
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
-
+$firstNameERROR = false;
 $emailERROR = false;
 
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
@@ -86,9 +86,9 @@ if (isset($_POST["btnSubmit"])){
     // Sanitize (clean) data by removing any potential JavaScript or html code
     // from users input on the form.
  
-    
-
-
+    $firstName = htmlentities($_POST["txtFirstName"],ENT_QUOTES,"UTF-8");
+    $dataRecord[]=$firstName;
+   
     
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $dataRecord[]=$email;
@@ -105,14 +105,14 @@ if (isset($_POST["btnSubmit"])){
     // be in the order they appear. errorMsg will be displayed on the form see
     // section 3c. The error flag ($emailERROR) will be used in section 3d.
     
-    
-    
-    
-    
-    
-    
-    
-    
+    if($firstName==""){
+       $errorMsg[]="Please enter your first name";
+       $firstNameERROR = true;
+    }elseif(!verifyAlphaNum($firstName)){
+       $errorMsg[]="Your first name appears to have extra character.";
+       $firstNameERROR = true;
+    }   
+
     if($email==""){
        $errorMsg[]="Please enter your email address";
        $emailERROR = true;
@@ -296,13 +296,13 @@ make it stand out that a mistake happened here.
 
         <fieldset class="contact"> 
             <legend>Contact Information</legend>
-                
-            
-            
-            
-            
-            
-            
+            <label for="txtFirstName" class="required">First Name
+                <input type="text" id="txtFirstName" name="txtFirstName"
+                       value="<?php print $firstName; ?>"
+                       tabindex="100" maxlength="45" placeholder="Enter your first name"
+                       <?php if($firstNameERROR) print 'class="mistake"'; ?>
+                       onfocus="this.select()" >
+            </label>
             <label for="txtEmail" class="required">Email
                 <input type="text" id="txtEmail" name="txtEmail" 
                        value="<?php print $email; ?>"
