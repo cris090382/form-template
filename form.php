@@ -301,7 +301,8 @@ make it stand out that a mistake happened here.
                        value="<?php print $firstName; ?>"
                        tabindex="100" maxlength="45" placeholder="Enter your first name"
                        <?php if($firstNameERROR) print 'class="mistake"'; ?>
-                       onfocus="this.select()" >
+                       onfocus="this.select()" 
+                       autofocus>
             </label>
             <label for="txtEmail" class="required">Email
                 <input type="text" id="txtEmail" name="txtEmail" 
