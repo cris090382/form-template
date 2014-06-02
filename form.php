@@ -47,6 +47,9 @@ $emailERROR = false;
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg=array(); 
 
+// array used to hold form values that will be written to a CSV file
+$dataRecord=array();  
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //  
 // SECTION: 2a.
@@ -84,11 +87,11 @@ if (isset($_POST["btnSubmit"])){
     // from users input on the form.
  
     
-    $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+
+
     
-
-
-
+    $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+    $dataRecord[]=$email;
 
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -153,26 +156,26 @@ if (isset($_POST["btnSubmit"])){
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
         // SECTION: 2g. 
-         
-        
-        
+        //
+        // This block saves the data to a CSV file. Be sure to create the file
+        // manually first and set the permissions to 666 ( -rw-rw-rw )
 
-        
+        $fileExt=".csv";
 
+        $myFileName="data/registration";
 
+        $filename = $myFileName . $fileExt;
 
+        if ($debug) print "\n\n<p>filename is " . $filename;
 
+        // now we just open the file for append
+        $file = fopen($filename, 'a');
 
+        // write the forms informations
+        fputcsv($file, $dataRecord);
 
-
-
-
-
-
-
-
-
-
+        // close the file
+        fclose($file);
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //
