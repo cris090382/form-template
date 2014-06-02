@@ -181,19 +181,19 @@ if (isset($_POST["btnSubmit"])){
         //
         // SECTION: 2h. 
         // 
-        
-        
-        
+        // Process for mailing a message which contains the forms data
+        // the message was built in section 2f.
+        $cc="";
+        $bcc="";
+        $from="WRONG site <noreply@yoursite.com>";
 
+        // I wanted to use the date in my message
+        $todaysDate=strftime("%x");
 
+        /* subject line for the email message */
+        $subject = "Web Order: " . $todaysDate ;
 
-
-
-
-
-
-
-
+        $mailed = sendMail($email, $cc, $bcc, $from, $subject, $message);
 
     } // end form is valid
     
@@ -221,22 +221,22 @@ if (isset($_POST["btnSubmit"])){
 // to display the form.
 if (isset($_POST["btnSubmit"]) AND empty($errorMsg)){ // closing of if marked with: end body submit
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    print "<h1>Your Request has ";
+
+    if (!$mailed) {
+        print "not ";
+    }
+
+    print "been processed</h1>";
+
+    print "<p>A copy of this message has ";
+    if (!$mailed) {
+        print "not ";
+    }
+    print "been sent</p>";
+    print "<p>To: " . $email . "</p>";
+    print "<p>Mail Message:</p>";
+       
     print $message;
     
 } else {
